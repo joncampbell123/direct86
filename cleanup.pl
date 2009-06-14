@@ -2,5 +2,5 @@
 #
 # clean up build cruft
 system("./rename.pl");
-system("rm -Rfv Debug Release");
+system("cd win95 && rm -Rfv Debug Release debug release *.opt *.plg *.ncb");
 
