@@ -1,0 +1,283 @@
+
+9/5/97
+	-Started this program
+	-Borrowed GUI code from Direct Edit
+
+9/24/97
+	-Implemented decompiler
+
+8/30/98
+	-Started writing log agin
+	-Fixed REP/REPNZ bugs
+	-Fixed CMPSB/CMPSW bugs
+	-Fixed INT 19h bugs
+	-Fixed INT 13h bugs
+	-Fixed XCHG bugs
+	-Implemented SBB and ADC
+
+8/31/98
+	-Implemented LEA,LDS,and LES
+    -When INT 19h is called, execution is halted and the user is queried as to
+     whether execution should continue. If the user selects "no", the simulated
+     BIOS reloads the boot sector and starts execution at 0000:7C00, which is
+     what your typical BIOS would do in the event of a call to INT 19h.
+   ****************************************************************************
+   * NOTE: Some older technical references refer to INT 19h as a "ROM BASICA" *
+   * interrupt service, however, I am not supporting that as it seems to be   *
+   * obselete today.                                                          *
+   ****************************************************************************
+    -Implemented a full INT 16h keyboard service
+	-Fixed MOV r/m,segreg bugs
+    -Overhauled the CMP instruction simulator. I used to execute the compare
+     for real, and then set the flags to what the real flags register held.
+     Unfortunately, this does not entirely work, (For some reason, the Parity
+     flag goes into spasms) So I rewrote the code to compare the way Intel
+     documents the CMP instruction to work: By computing the difference and
+     updating the flags based upon the difference.
+    -Fixed SBB/SUB bugs, now the CF flag is properly set or reset
+    -Fixed ADC/ADD bugs, well, not particulary bugs.... you see... I forgot to
+     program the ADC/ADD emulator code to check for a carry condition and
+     update the CF flag appropriately
+	-Fixed another CMP bug
+	-Fixed MOV al/ax,[XXXX] instruction bug
+	-OOPS! The TEST instruction emulator was peforming
+	 the AND operation directly to the original data.
+	 No wonder AX/AL changed when TEST did it's thing.
+	-OOOPS! Forgot something that made the RCL/RCR
+	 emulator code get stuck in a loop
+
+10/2/98
+	-Fixed RCR/RCL flag bugs
+	-Fixed CBW bug
+
+10/3/98
+	-Fixed JMP/CALL bugs
+
+10/5/98
+	-Fixed LGDT/LIDT/SGDT/SIDT bugs
+	-Fixed keyboard/interrupt system bugs (it works now)
+	-Fixed Keyboard controller bugs
+
+10/8/98
+    -Fixed MOV bugs, now emulation of instructions MOV FS,xx and MOV GS,xx
+     won't cause a page fault
+
+12/25/98
+    -Found and fixed troublesome ADD bug that apparently caused the
+     miscalculcation that results in MS-DOS falling on it's face (I.E. loading
+     of OS was wrong and when it JMPed to it a crash resulted)
+	-Renewed support for interesting instruction XADD in interpreter
+    -AAD/AAM now properly treat the value they should divide/multiply by as
+     BYTE, not WORD
+    -YES!!!! Fixed FAR call problems by properly ordering the stack! MS-DOS
+     should run properly now....
+
+12/26/98
+    -Added CPU specific model emulation. As of now Direct86 fakes old 8086/8088
+     processors (including FLAGS register behavior)
+	-Interesting... DOS 7.0 gives up with error message if CPU it's
+	 running under is not a 386 or higher
+
+12/27/98
+	-Added CPU model selection
+    -Nuts!! Fixed coding mistake, apparently I was misled about the opcode for
+     the instruction PUSHA. Fixed it
+    -OOPS! Forgot recognization of old XLAT instruction!
+	-Added SHLD emulation
+
+4/16/99
+	-Found out why operating systems kept crashing. REP CMPSB was improperly
+	 emulated. I found that even if the comparison fails, you're still supposed
+	 to decrement CX
+
+4/19/99
+	-Parity flag is now properly emulated
+
+4/20/99
+	-386+ instructions SHLD and SHRD were improperly emulated due to confusion
+	 about register order. Fixed that.
+	-TEST instruction now handles PE flag
+
+5/29/99
+    -Fixed PUSHA/POPA problem (EDX and EBX were restored in the wrong order)
+
+6/24/99
+	-Corrected MUL overflow handling (Carry is set, not overflow)
+	-Corrected IMUL overflow handling (Carry is set, not overflow)
+	-Fixed IMUL carry flag bugs
+
+7/23/99
+	-Implemented a simple write-through cache emulator
+
+8/1/99
+	-Fixed bugs regarding the conditional jumps (i.e. JGE ignored ZR flag)
+	-Fixed MOVS mis-emulation (apparently the acculumator register remains
+	 untouched by this instruction)
+    -SHR instruction emulation now includes setting CARRY if anything is
+     shifted out
+
+8/2/99
+	-Fixed emulation bug with string operations CMPS, MOVS, STOS, etc.
+     My earlier impression was that setting the counter register to 0 and
+     executing REP [whatever] resulted in a loop that executed 65536 times
+     (thus the cause of MS-DOS blowing it's own stack segment)
+
+8/22/99
+    -Fixed ADC and SBB emulation bugs, now if the value to add has all bits
+     set, and the carry flag set, the carry flag will remain set even though
+     the value remains unchanged
+	-ADC/SBB/ADD was always clearing the PE flag (why did I do that?)
+	-SBB now ties AUX CARRY with CARRY
+	-SUB wasn't actually clearing CARRY nor setting it (major coding mistake)
+	-Fixed and simplified OVERFLOW flag emulation in ADC/ADD/SUB/SBB
+	-Fixed MUL instruction mis-emulaton: now if an overflow occurs, both
+	 CARRY and OVERFLOW flags are set
+	-Fixed IMUL OVERFLOW emulation, now signed integer overflows are
+	 handled correctly
+	-Fixed idiotic mistake in IDIV emulation where the numbers
+	 were still treated like unsigned numbers!
+	-Discovered and implemented undocumented CPU behavior involving the
+	 AUX flag and the ADD/ADC/SUB/SBB instructions
+	-Fixed and added flag emulation for the instruction BSF
+
+8/23/99
+	-Fixed emulation of RCR/RCL instructions (they were slightly wrong
+	 due to a wrong impression on how they worked)
+	-Fixed SAR emulation bugs
+	-Fixed and corrected very screwy SHLD emulation
+	-Fixed AAD emulation: now flags are modified and carry conditions properly
+	 handled
+	-Corrected AAM emulation
+	-Fixed AAS emulation
+	-Added DAA emulation
+	-Fixed DAS emulation
+
+8/25/99
+	-Corrected 80286+ r/m addressing calculation emulation
+
+9/5/99
+	-Fixed NEG instruction emulation regarding the PE (parity) flag
+
+9/6/99
+	-OH MY GOD COULD I HAVE BEEN THAT LAME? Found accidental switch in
+	 emulating TEST and NOT instructions!!! GEEZ!! NO WONDER DOS AND
+	 LINUX COULDN'T FUNCTION PROPERLY!
+	-Corrected SHL/SHR overflow emulation
+
+9/19/99
+	-Fixed JG/JGE/JL/JLE bugs
+	-Fixed overflow emulation bugs in SUB/SBB/CMP
+	-Fixed overflow emulation bugs in ADC/ADD
+
+6/25/2k
+	-Started developing for this project again
+	-Fixed my mistakes: apparently the addressing of 286+ CPUs is
+	 the same as the old 8086
+
+6/26/2k
+	-Fixed bug in setting PF when emulating OR instruction.
+	 Apparently OR is yet another instruction that likes to compute
+	 PF using only the first 8 bits. Why? I have no idea, but I
+	 think it involves compatibility with the 8088.
+
+8/22/2k
+	-Fixed PUSHA emulation. Apparently I hadn't followed my own
+	 notes about what the 80386 does with SP during this instruction
+	-Fixed coding mistake in ROM bios (Used DH in INT 13 for going
+	 from one drive to another instead of DL)
+	-Implemented dynamic memory mapping, I/O port mapping, that
+	 makes for faster and easier to implement emulation
+	-Implemented emulation for Programmable Interrupt Controller,
+	 complete with I/O port for command and interrupt mask,
+	 signal recieving from hardware, interrupt in-service and
+	 interrupt pending dispatching to CPU, and handling of IRQ
+	 priorities (just like the real thing)
+	-Implemented basic 18.2 ticks/sec timer on IRQ 0.
+
+8/31/2k
+	-Corrected misconseption on the geometry of a single-sided 720K
+	 3.5" floppy. Apparently it has 2 heads, 9 sectors/track,
+	 80 tracks.
+
+
+10/2/2k
+	-YAAAAY!!! I don't have to deal with Microsoft MASM! found
+	 freeware assembler NASM!
+
+10/7/2k
+	-Fixed INT 13h AH=15h (Read DASD type) bugs. Apparently emulator
+	 BIOS was reporting drives A and B as "no change line supported"
+	 and drives C and D as "non-existient"
+
+10/19/2k
+	-Fixed another mis-emulation: instructions SLDT and LLDT apparently
+	 are not valid if the CPU is not in protected mode
+	-Oops. Apparently emulation of INT 13h function 8 (Get Drive Params)
+	 was screwed up. You're apparently supposed to return total number
+	 of heads minus 1 and total number of tracks minus 1
+
+10/20/2k
+	-WHOOPS! Discovered bug in emulation of 386+ near JMP(conditional) 
+	 instructions. Apparently I was devising the logic from the first
+	 opcode byte (which was always 0Fh) instead of the second opcode
+	 byte. As a result, they always appeared as 'JG' and executed like
+	 so.
+
+10/21/2k
+	-Completely overhauled code and put into sections
+	-Rewrote all devices into somewhat modular forms to act as individual
+	 devices
+
+11/13/2k
+    -Got sick of Visual C++ 6.0 overhead, problems with long filenames in the
+     source code, etc. Renamed source files to have 8.3 MS-DOS names and
+     recompiled using Visual C++ 2.0
+    -Removed usage of OF_LONGNAMES flag. Visual C++ 2.0 library and header files
+     do not recognize this flag
+    -Was happy to see the end result was a version of Direct86 that could,
+     most likely, run under Windows 3.1 with Win32 libraries installed. I could
+     tell by the fact that Windows let me create old-skool windows with both
+     title bars and a 1-pixel border (something that Windows 95 does not let 
+     more modern Win32 applications create). This seems to have something to
+     do with the 'magic' WORD in the Image Optional Header section of a Win32
+     executable. All applications that can run under Windows 3.1 with Win32
+     libraries have one value, and they are allowed to create this sort of
+     window. All applications that require Windows 95 (or were compiled using
+     Visual C++ 4.0 or higher) have a different value. If they try to create
+     the 1-pixel border with title bar style window, Windows 95 remaps it to
+     use the new 3D border (which takes up a few more pixels).
+    -Rewrote MAKEFILE to create EXE in D86Win32.exe so I can differentiate
+     different versions of this emulator.
+
+11/15/2k
+    -Wrote base code to handle execution and decoding via a table of addresses
+     to functions that you call to decode.
+    -Wrote base code for emulation of instruction prefetch queue, and wrote
+     exportable functions that the other parts of the executioneer can use
+     to read from the prefetch queue or from the instruction pointer without
+     the emulation function itself not worrying about either.
+
+11/19/2k
+    -Discarded unnecesary icons that seemed to reside with the source code.
+    -Deleted PAK file. Since all it contained was KEYBOARD window image, and
+     keyboard window image is now in KEYBOARD.RAW (and part of D86WIN32.EXE's
+     resources).
+    -Deleted CP.BAT (used in the past to copy around disk images for testing).
+    -Fixed bug where REP STOSW was being emulated both by the instruction
+     table AND the old code.
+    -When CPU breakpoint device is reset, it no longer "forgets" the
+     breakpoints
+
+2/2/2001
+    -Made Win32 (Windows 3.1) port
+    -Reorganized files
+
+2/8/2001
+	-Fixed bug in naming symbol file interpretation code where once
+	 'constrain_seg' was specified it remained set for each future
+	 statement
+	-Win32 (Windows 3.1) was tried under Windows 3.1, turns out it
+	 (and all other Win32 programs I had) crashed with an "Exception
+	 in 0xC0000005" error message from the Win32 libraries whenever
+	 it was run. The components run only lasted enough to create
+	 the colors section of DEDIT86.INI

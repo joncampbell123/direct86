@@ -1,0 +1,32 @@
+
+extern char *common_ini_file;
+extern char *version_string;
+extern char *copyright_string;
+extern char *szAppName;
+extern char *szClassName;
+extern char *inifile;
+extern HINSTANCE					hInst;
+extern HWND							hwndMain;
+extern HMENU						OurMenu;
+extern BOOL							paintDivider;
+extern BOOL							showOpcodes;
+extern BOOL							showAddress;
+extern BOOL							IsMainActive;
+extern BOOL							UserAbort;
+extern HFONT						EditFont;
+extern int							ColumnSize;
+extern int							efontw,efonth;
+extern int							WindowWidth,WindowHeight;
+extern BOOL							PaintFlag;
+extern int							swindow_x;
+extern int							curs_x,curs_y;
+extern long							bcolor,fcolor;
+extern long							hilbcolor,hilfcolor;
+extern char							PaintingSourceDump;
+extern char							AmIActive;
+extern BOOL							ctrldown;
+extern char							mmtbuf2[1024];
+extern char							Tbuf2[100];
+
+long FAR PASCAL MainWndProc(HWND hwnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
+void RepaintSourceDump(BOOL p);

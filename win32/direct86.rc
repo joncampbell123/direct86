@@ -1,0 +1,353 @@
+//Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+IDI_EXEICON             ICON    DISCARDABLE     "APPICON.ICO"
+IDI_MEMICON             ICON    DISCARDABLE     "MEMICON.ICO"
+IDI_REGICON             ICON    DISCARDABLE     "REGICON.ICO"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_RAMCONFIG DIALOG DISCARDABLE  0, 0, 186, 89
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "RAM configuration"
+FONT 8, "MS Sans Serif"
+BEGIN
+    RTEXT           "Lower RAM:",IDC_STATIC,6,8,65,8
+    COMBOBOX        IDC_RAM_CONVAMOUNT,76,6,104,30,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Extended RAM:",IDC_STATIC,6,25,65,8
+    COMBOBOX        IDC_RAM_EXTAMOUNT,76,23,104,30,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    CTEXT           "NOTE: Changes to these parameters do not take effect until the computer is first powered down and then powered up.",
+                    IDC_STATIC,6,41,174,25
+    DEFPUSHBUTTON   "OK",IDOK,6,70,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,130,71,50,14
+END
+
+IDD_BIOSCFG DIALOG DISCARDABLE  0, 0, 355, 90
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "BIOS configuration"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Floppy A:",IDC_STATIC,6,8,30,8
+    COMBOBOX        IDC_BIOSCFG_DRIVE_A,38,6,102,30,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Select file...",IDC_BIOSCFG_DRIVE_A_SELFILE,146,6,44,13
+    PUSHBUTTON      "No disk",IDC_BIOSCFG_DRIVE_A_SELNOFILE,196,6,31,13
+    LTEXT           "First floppy drive configuration",
+                    IDC_BIOSCFG_DRIVE_A_CONFIGSTR,232,8,122,8
+    LTEXT           "Floppy B:",IDC_STATIC,6,24,30,8
+    COMBOBOX        IDC_BIOSCFG_DRIVE_B,38,22,102,30,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Select file...",IDC_BIOSCFG_DRIVE_B_SELFILE,146,22,44,
+                    13
+    PUSHBUTTON      "No disk",IDC_BIOSCFG_DRIVE_B_SELNOFILE,196,22,31,13
+    LTEXT           "Second floppy drive configuration",
+                    IDC_BIOSCFG_DRIVE_B_CONFIGSTR,232,24,122,8
+    LTEXT           "HD C:",IDC_STATIC,6,40,30,8
+    COMBOBOX        IDC_BIOSCFG_DRIVE_C,38,38,102,30,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Select file...",IDC_BIOSCFG_DRIVE_C_SELFILE,146,38,44,
+                    13
+    PUSHBUTTON      "No disk",IDC_BIOSCFG_DRIVE_C_SELNOFILE,196,38,31,13
+    LTEXT           "First hard drive configuration",
+                    IDC_BIOSCFG_DRIVE_C_CONFIGSTR,232,40,122,8
+    LTEXT           "HD D:",IDC_STATIC,6,55,30,8
+    COMBOBOX        IDC_BIOSCFG_DRIVE_D,38,54,102,30,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Select file...",IDC_BIOSCFG_DRIVE_D_SELFILE,146,54,44,
+                    13
+    PUSHBUTTON      "No disk",IDC_BIOSCFG_DRIVE_D_SELNOFILE,196,54,31,13
+    LTEXT           "Second hard drive configuration",
+                    IDC_BIOSCFG_DRIVE_D_CONFIGSTR,232,55,122,8
+    DEFPUSHBUTTON   "Save",IDOK,6,72,40,14
+    PUSHBUTTON      "Close",IDCANCEL,310,71,39,15
+END
+
+IDD_BREAKPOINTS DIALOG DISCARDABLE  0, 0, 330, 143
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Breakpoints..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_BREAKLIST,6,6,236,115,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Close",IDCANCEL,6,124,50,14
+    PUSHBUTTON      "&Add Breakpoint...",IDC_ADD,247,7,76,14
+    PUSHBUTTON      "&Remove Breakpoint...",IDC_REMOVE,247,25,76,14
+    PUSHBUTTON      "&Enable Breakpoint...",IDC_ENABLE,247,42,76,14
+    PUSHBUTTON      "&Disable Breakpoint...",IDC_DISABLE,247,61,76,14
+    PUSHBUTTON      "Edi&t Breakpoint...",IDC_EDIT,247,79,76,14
+END
+
+IDD_ADDBREAK DIALOG DISCARDABLE  0, 0, 264, 102
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Add breakpoint..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Type of breakpoint",IDC_STATIC,6,2,135,57
+    CONTROL         "Memory address range",IDC_TYPE_MEMR,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,12,14,122,8
+    CONTROL         "I/O address range",IDC_TYPE_IOR,"Button",
+                    BS_AUTORADIOBUTTON,12,24,122,8
+    CONTROL         "Software interrupt address range",IDC_TYPE_SWR,"Button",
+                    BS_AUTORADIOBUTTON,12,34,122,8
+    CONTROL         "Hardware interrupt address range",IDC_TYPE_HWR,"Button",
+                    BS_AUTORADIOBUTTON,12,43,122,8
+    GROUPBOX        "Breakpoint conditions",IDC_STATIC,6,61,135,36,WS_GROUP
+    CONTROL         "On read",IDC_TR_READ,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,13,72,119,8
+    CONTROL         "On write",IDC_TR_WRITE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,13,83,119,8
+    RTEXT           "From:",IDC_STATIC,146,8,23,8
+    EDITTEXT        IDC_FROM,174,5,85,13,ES_AUTOHSCROLL
+    RTEXT           "To:",IDC_STATIC,146,26,23,8
+    EDITTEXT        IDC_TO,174,24,85,13,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,152,84,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,208,84,50,14
+END
+
+IDD_CPUSTACKWATCH DIALOG DISCARDABLE  0, 0, 304, 151
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "CPU stack watch"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_LIST,5,5,294,122,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "Close",IDOK,6,131,50,14
+END
+
+IDD_ABOUT DIALOG DISCARDABLE  0, 0, 312, 53
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "About Direct86..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,130,31,50,14
+    LTEXT           "Win32 version for Windows 3.1",IDC_STATIC,0,45,311,8
+    LTEXT           "",IDC_ABOUT_VER,6,7,300,8
+    LTEXT           "",IDC_ABOUT_COPYRIGHT,6,18,301,8
+END
+
+IDD_INPUTBOX DIALOG DISCARDABLE  0, 0, 302, 30
+STYLE WS_POPUP | WS_VISIBLE | WS_BORDER
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_INPUT,1,1,301,13,ES_AUTOHSCROLL
+    LTEXT           "Static",IDC_INPUT_TITLE,1,20,248,9
+    DEFPUSHBUTTON   "OK",IDOK,252,15,50,14
+END
+
+IDD_CPUSELECT DIALOG DISCARDABLE  0, 0, 186, 44
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "CPU model..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_CPUSELECT_MODEL,7,15,115,30,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,130,6,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,130,23,50,14
+END
+
+IDD_DECOMPILE DIALOG DISCARDABLE  0, 0, 186, 80
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Decompile to file..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Segment:",IDC_STATIC,5,5,34,8
+    EDITTEXT        IDC_RDSEG,50,3,132,12,ES_AUTOHSCROLL
+    LTEXT           "Start offset:",IDC_STATIC,5,20,43,8
+    EDITTEXT        IDC_FROM,50,18,132,12,ES_AUTOHSCROLL
+    LTEXT           "End offset:",IDC_STATIC,5,35,43,8
+    EDITTEXT        IDC_TO,50,32,132,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PATH,4,46,178,13,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,132,62,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,4,62,50,14
+END
+
+IDD_CPUTRAIL DIALOG DISCARDABLE  0, 0, 280, 136
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "CPU trail..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Close",IDOK,4,118,50,14
+    LISTBOX         IDC_TRAILLIST,4,4,272,111,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_PICCONFIG DIALOG DISCARDABLE  0, 0, 186, 68
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "PIC configuration..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "PC/XT single-PIC",IDC_XT_PIC,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,5,6,69,8
+    CONTROL         "AT dual-PIC",IDC_AT_PIC,"Button",BS_AUTORADIOBUTTON,5,
+                    16,51,8
+    CONTROL         "IRQ 2 -> IRQ 9 remapping",IDC_AT_IRQ2REMAP,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,23,25,100,10
+    CONTROL         "IRQs 8-15 have IRQ 2 priority",IDC_AT_IRQPRIO,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,23,36,108,10
+    DEFPUSHBUTTON   "OK",IDOK,131,50,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,4,50,37,14
+END
+
+IDD_DEVICES DIALOG DISCARDABLE  0, 0, 254, 158
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Add/Remove devices..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_DEVLIST,3,4,247,133,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Close",IDCANCEL,214,140,36,14
+    PUSHBUTTON      "Power of&f",IDC_POWEROFF,3,140,40,14
+    PUSHBUTTON      "Power o&n",IDC_POWERON,48,140,40,14
+    PUSHBUTTON      "&Reset",IDC_RESET,93,140,35,14
+    PUSHBUTTON      "R&emove",IDC_REMOVE,134,140,35,14
+    PUSHBUTTON      "&Add",IDC_ADD,174,140,35,14
+END
+
+IDD_ADDDEVICES DIALOG DISCARDABLE  0, 0, 252, 109
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Add device..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_DEVLIST,3,3,246,87,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "&Add",IDOK,199,92,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,143,92,50,14
+END
+
+IDD_NAMINGCONFIG DIALOG DISCARDABLE  0, 0, 330, 143
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Name symbol configuration..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_FILELIST,6,6,236,115,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Close",IDOK,6,124,50,14
+    PUSHBUTTON      "&Add file to list",IDADDFILE,247,7,76,14
+    PUSHBUTTON      "&Remove file from list",IDREMOVE,247,25,76,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Exit",                       IDM_MENU_FILE_EXIT
+    END
+    POPUP "&Settings"
+    BEGIN
+        MENUITEM "&Reset computer",             IDM_MENU_SIM_RESET
+        MENUITEM "Power &on computer",          IDC_COMPUTER_POWERON
+        MENUITEM "Power off computer",          IDC_COMPUTER_POWEROFF
+        MENUITEM SEPARATOR
+        POPUP "CPU"
+        BEGIN
+            MENUITEM "CPU model...",                IDC_EDIT_CPU
+            MENUITEM "CPU speed...",                IDM_EDIT_CPUSPEED
+        END
+        POPUP "Motherboard"
+        BEGIN
+            MENUITEM "&Bios configuration",         IDM_EDIT_BIOS
+            MENUITEM "&PIC configuration",          IDC_PIC_CONFIG
+        END
+        POPUP "Memory"
+        BEGIN
+            MENUITEM "&Configure RAM",              IDC_MEM_CONFIGRAM
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Add/Remove devices...",       IDC_ADDREMDEV
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "Decompile to file...",        IDC_DECOMPILE_TO_FILE
+        MENUITEM SEPARATOR
+        MENUITEM "View CPU trails...",          IDC_CPUTRAILVIEW
+        MENUITEM "View CPU stack tracing...",   IDC_CPUSTACKWVIEW
+    END
+    POPUP "&Debug"
+    BEGIN
+        MENUITEM "Configure naming symbols",    IDC_CONFIG_NAMING
+        MENUITEM "&Enable naming symbols",      IDC_SYMNAMES_ENABLE
+        MENUITEM "Reload naming symbols",       IDC_RELOAD_NAMING
+        MENUITEM SEPARATOR
+        MENUITEM "Breakpoints...",              IDC_SIMULATION_BREAKS
+    END
+    POPUP "S&tatus windows"
+    BEGIN
+        MENUITEM "CPU cache...",                IDM_WINDOWS_CPUCACHE
+        MENUITEM "CPU registers...",            IDM_WINDOWS_REGS
+        MENUITEM "Display...",                  IDM_WINDOWS_DISPLAY
+        MENUITEM "&Memory dump...",             ID_STATUS_MEMORYDUMP
+        MENUITEM "PIC status...",               IDM_WINDOWS_PIC
+        MENUITEM "Virtual keyboard...",         IDM_WINDOWS_KEYB
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "About Direct86...",           IDM_ABOUT
+    END
+END
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
