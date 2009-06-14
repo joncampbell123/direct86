@@ -281,3 +281,10 @@
 	 in 0xC0000005" error message from the Win32 libraries whenever
 	 it was run. The components run only lasted enough to create
 	 the colors section of DEDIT86.INI
+
+6/14/2009
+    -Dug out of the archives, blew off the dust
+    -Checked into ISP source control
+    -Removed NMAKE batch file
+    -Added code to cleanup (from Linux)
+
