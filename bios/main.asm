@@ -20,30 +20,30 @@
                 times   0100h-($-$$) DB 0CFh
 
 config_prog:
-incbin "config\config.com"
+incbin "config/config.com"
 
                 times   0C000h-($-$$) DB 0CFh
 ; code begins here
 ; ----------------
 
-%include "boot\int19.inc"
-%include "boot\noboot.inc"              ; routine for no-boot error message
-%include "boot\reset.inc"               ; routine for reset
+%include "boot/int19.inc"
+%include "boot/noboot.inc"              ; routine for no-boot error message
+%include "boot/reset.inc"               ; routine for reset
 
 ; RAM routines
-%include "mem\countram.inc"
+%include "mem/countram.inc"
 
 ; video BIOS routines
-%include "video\text.inc"
+%include "video/text.inc"
 
 ; keyboard BIOS routines
-%include "keyboard\keyboard.inc"
+%include "keyboard/keyboard.inc"
 
 ; CMOS/RTC routines
-%include "cmos\cmos.inc"
+%include "cmos/cmos.inc"
 
 ; Timer routines
-%include "timer\setup.inc"
+%include "timer/setup.inc"
 
 ; codeholio's signature
 ;----------------------

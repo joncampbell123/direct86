@@ -289,10 +289,10 @@ puthex8:                push        ax
                         ret
 
 vid_fnt_chr8x8:
-incbin "video\chr8x8.set"
+incbin "video/chr8x8.set"
 
 vid_fnt_chr8x16:
-incbin "video\chr8x16.set"
+incbin "video/chr8x16.set"
 
 vid_default_palette:
-incbin "video\stdvga.pal"
+incbin "video/stdvga.pal"
