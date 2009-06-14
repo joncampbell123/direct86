@@ -287,4 +287,5 @@
     -Checked into ISP source control
     -Removed NMAKE batch file
     -Added code to cleanup (from Linux)
+    -Removed "win32" MSVC 2.0 build files
 

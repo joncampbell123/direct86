@@ -43,8 +43,8 @@ void RamConfig();
 void PICConfig();
 
 // DIRECT86.C
-char *version_string =		"Version 1.00. October 21st, 2000.";
-char *copyright_string =	"Copyright (C) 1997-2000, Jonathan \"The Great Codeholio\" Campbell";
+char *version_string =		"Version 2.00. June 14th, 2009.";
+char *copyright_string =	"Copyright (C) 1997-2009, Jonathan \"The Great Codeholio\" Campbell";
 char *szAppName =			"Direct 86 v1.0";
 char *szClassName =			"JMC_PROG_SOTHERE_DEDITx86";
 char *inifile =				"dedit86.ini";
@@ -368,8 +368,8 @@ void DrawSourceDump(HDC hDC)
 
 		if (gna < 2) {
 			if (HiliteLine) {
-				SetTextColor(hDC,0xFFFFFFFF);
-				SetBkColor(hDC,RGB(192,192,192) ^ 0xFFFFFFFF);
+				SetTextColor(hDC,0xFFFFFF);
+				SetBkColor(hDC,RGB(192,192,192) ^ 0xFFFFFF);
 			}
 			else {
 				SetTextColor(hDC,0);
